@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://3tibeqon6ihi"]
+
+[ext_resource type="Texture2D" uid="uid://bbxqh5tsml3yl" path="res://DALL·E 2024-02-01 20.50.22 - A beautiful backdrop of an orchard with bare branches and leaves scattered on the ground, capturing a serene and picturesque autumnal scene. The setti.png" id="1_uvsr4"]
+[ext_resource type="Script" path="res://Button.gd" id="2_0glys"]
+[ext_resource type="Script" path="res://finalscore.gd" id="4_bknn7"]
+[ext_resource type="AudioStream" uid="uid://onfa34m1cbeg" path="res://AL.ogg" id="5_84r3x"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="end" type="Sprite2D" parent="."]
+position = Vector2(349, 351)
+scale = Vector2(0.681641, 0.689453)
+texture = ExtResource("1_uvsr4")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 194.0
+offset_top = 178.0
+offset_right = 480.0
+offset_bottom = 247.0
+rotation = 0.000143563
+theme_override_colors/font_color = Color(0.521569, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "GAME OVER"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 309.0
+offset_top = 376.0
+offset_right = 410.0
+offset_bottom = 407.0
+text = "PLAY AGAIN"
+script = ExtResource("2_0glys")
+
+[node name="finalscore" type="Label" parent="."]
+offset_left = 195.0
+offset_top = 260.0
+offset_right = 481.0
+offset_bottom = 329.0
+rotation = 0.000143563
+theme_override_colors/font_color = Color(0.521569, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "SCORE: "
+script = ExtResource("4_bknn7")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_84r3x")
+volume_db = -7.208
+autoplay = true
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

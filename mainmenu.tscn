@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://bptumr5f51ei4"]
+
+[ext_resource type="Texture2D" uid="uid://cia0oxkibawjw" path="res://DALL·E 2024-01-31 20.07.40 - A whimsical, vibrant backdrop for an apple catching game set in a lush, enchanted forest. The scene is filled with towering, leafy green trees, their .png" id="2_blym6"]
+[ext_resource type="Script" path="res://Button.gd" id="2_uar2e"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(349.5, 356.5)
+scale = Vector2(0.682617, 0.694336)
+texture = ExtResource("2_blym6")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 279.0
+offset_right = 543.0
+offset_bottom = 435.0
+theme_override_font_sizes/font_size = 75
+text = "PLAY"
+script = ExtResource("2_uar2e")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Button"]
+layout_mode = 0
+offset_left = -12.0
+offset_top = -108.0
+offset_right = 416.0
+offset_bottom = -34.0
+theme_override_colors/default_color = Color(0.494118, 0, 0, 1)
+theme_override_colors/selection_color = Color(0.862745, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "APPLE CATCHER"
+
+[connection signal="pressed" from="Button" to="Button" method="_on_PlayButton_pressed"]

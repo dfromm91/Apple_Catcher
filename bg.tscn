@@ -1,0 +1,107 @@
+[gd_scene load_steps=18 format=3 uid="uid://d3r3ttitgtfqg"]
+
+[ext_resource type="Texture2D" uid="uid://cia0oxkibawjw" path="res://DALL·E 2024-01-31 20.07.40 - A whimsical, vibrant backdrop for an apple catching game set in a lush, enchanted forest. The scene is filled with towering, leafy green trees, their .png" id="1_be10k"]
+[ext_resource type="Script" path="res://bg.gd" id="1_eyy7l"]
+[ext_resource type="PackedScene" uid="uid://ckv40vjelatxg" path="res://apple.tscn" id="2_knsk0"]
+[ext_resource type="PackedScene" uid="uid://nwrocjts0lkd" path="res://basket.tscn" id="4_8imjk"]
+[ext_resource type="Script" path="res://spawn.gd" id="4_r4gvp"]
+[ext_resource type="Script" path="res://basket.gd" id="5_q7jct"]
+[ext_resource type="PackedScene" uid="uid://docxcuggukkpa" path="res://green.tscn" id="5_qr57m"]
+[ext_resource type="PackedScene" uid="uid://tjuqtkxuq8hq" path="res://goldenapple.tscn" id="6_cxn12"]
+[ext_resource type="Script" path="res://Label.gd" id="6_kfc6r"]
+[ext_resource type="PackedScene" uid="uid://b0ns22ci3i55s" path="res://clock.tscn" id="7_vhmg1"]
+[ext_resource type="Texture2D" uid="uid://u5pjwva5tpex" path="res://output-onlinepngtools(1).png" id="8_vff67"]
+[ext_resource type="AudioStream" uid="uid://dieol03qrec0h" path="res://Output-1-2.ogg" id="10_c8whc"]
+[ext_resource type="AudioStream" uid="uid://dkhg7ctixhs25" path="res://195139__misato__crank.wav" id="11_3me43"]
+[ext_resource type="Script" path="res://AudioStreamPlayer2D.gd" id="12_ft2te"]
+[ext_resource type="AudioStream" uid="uid://cak8kwknba5je" path="res://649543__ajanhallinta__ouch.wav" id="13_kp8rw"]
+[ext_resource type="AudioStream" uid="uid://daxsyq6gpupe0" path="res://336579__anthousai__coins-in-cloth-05.wav" id="16_qhrug"]
+[ext_resource type="AudioStream" uid="uid://du1t4a34eabli" path="res://372883__morganpurkis__2x-clock-tick.wav" id="17_kqmrw"]
+
+[node name="bg" type="Node2D"]
+script = ExtResource("1_eyy7l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(352, 350.5)
+scale = Vector2(0.683594, 0.680664)
+texture = ExtResource("1_be10k")
+
+[node name="spawn" type="Node2D" parent="."]
+script = ExtResource("4_r4gvp")
+redscene = ExtResource("2_knsk0")
+greenscene = ExtResource("5_qr57m")
+goldscene = ExtResource("6_cxn12")
+clockscene = ExtResource("7_vhmg1")
+
+[node name="Timer" type="Timer" parent="spawn"]
+wait_time = 2.125
+autostart = true
+
+[node name="basket" parent="." instance=ExtResource("4_8imjk")]
+script = ExtResource("5_q7jct")
+
+[node name="score" type="Label" parent="."]
+offset_left = 12.0
+offset_top = -2.0
+offset_right = 197.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 50
+text = "SCORE: "
+script = ExtResource("6_kfc6r")
+
+[node name="health" type="Label" parent="."]
+offset_left = 495.0
+offset_top = -1.0
+offset_right = 687.0
+offset_bottom = 68.0
+theme_override_font_sizes/font_size = 50
+text = "HEALTH"
+
+[node name="health1" type="Sprite2D" parent="."]
+position = Vector2(518, 86.5)
+scale = Vector2(0.0566406, 0.0576172)
+texture = ExtResource("8_vff67")
+
+[node name="health2" type="Sprite2D" parent="."]
+position = Vector2(554, 87)
+scale = Vector2(0.0566406, 0.0576172)
+texture = ExtResource("8_vff67")
+
+[node name="health3" type="Sprite2D" parent="."]
+position = Vector2(591, 86.5)
+scale = Vector2(0.0566406, 0.0576172)
+texture = ExtResource("8_vff67")
+
+[node name="health4" type="Sprite2D" parent="."]
+position = Vector2(628, 87.5)
+scale = Vector2(0.0566406, 0.0576172)
+texture = ExtResource("8_vff67")
+
+[node name="health5" type="Sprite2D" parent="."]
+position = Vector2(665, 85.5)
+scale = Vector2(0.0566406, 0.0576172)
+texture = ExtResource("8_vff67")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_c8whc")
+volume_db = -2.559
+autoplay = true
+
+[node name="chomp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_3me43")
+volume_db = -4.618
+autoplay = true
+script = ExtResource("12_ft2te")
+
+[node name="oof" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_kp8rw")
+volume_db = -7.208
+
+[node name="jingle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_qhrug")
+
+[node name="tick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_kqmrw")
+volume_db = -5.149
+
+[connection signal="timeout" from="spawn/Timer" to="spawn" method="spawn_apples"]

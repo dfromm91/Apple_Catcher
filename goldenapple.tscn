@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://tjuqtkxuq8hq"]
+
+[ext_resource type="Script" path="res://goldenapple.gd" id="1_qpoqu"]
+[ext_resource type="Texture2D" uid="uid://dmd6nw3p7aerq" path="res://kisspng-golden-apple-golden-apple-5aa48bca65ed62.4435207215207331304175.png" id="1_t0g6r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_duhpv"]
+radius = 18.2483
+
+[node name="Node2D" type="Area2D"]
+script = ExtResource("1_qpoqu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 6)
+scale = Vector2(0.13, 0.122)
+texture = ExtResource("1_t0g6r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 3)
+shape = SubResource("CircleShape2D_duhpv")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

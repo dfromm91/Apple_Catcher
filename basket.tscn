@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://nwrocjts0lkd"]
+
+[ext_resource type="Texture2D" uid="uid://vmwk85dd1qab" path="res://—Pngtree—simple basket_3058798.png" id="1_ehtie"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfk7x"]
+size = Vector2(63, 43.5)
+
+[node name="basket" type="Area2D"]
+position = Vector2(1, 0)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(341, 659)
+scale = Vector2(0.0808333, 0.0808333)
+texture = ExtResource("1_ehtie")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(342.5, 654)
+shape = SubResource("RectangleShape2D_wfk7x")
